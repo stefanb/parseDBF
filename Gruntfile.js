@@ -10,10 +10,15 @@ module.exports = function(grunt) {
         mochaTest: {
             test: {
                 options: {
-                    reporter: 'nyan'
+                    reporter: 'spec'
                 },
                 src: ['test/*.js']
-            }
+            },
+	    coverage: {
+      		options: {
+        	  coveralls: true
+      		}
+	    }
         },
         coveralls: {
             // Options relevant to all targets
@@ -31,11 +36,25 @@ module.exports = function(grunt) {
                     // Any options for just this target
                 }
             },
-        }
-
+        },
+        mochacov: {
+    		coverage: {
+      			options: {
+        			coveralls: true
+      			}
+		},
+    		test: {
+      			options: {
+        			reporter: 'spec'
+      			}
+    		},
+    		options: {
+      				files: 'test/*.js'
+    		}
+  	}
     });
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-coveralls');
-	grunt.registerTask('default', ['jshint','mochaTest']);
+	grunt.registerTask('default', ['jshint','mochaTest','mochacov']);
 };
