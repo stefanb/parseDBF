@@ -10,15 +10,11 @@ module.exports = function(grunt) {
         mochaTest: {
             test: {
                 options: {
-                    reporter: 'spec'
+                    reporter: 'spec',
+                    coveralls: true
                 },
                 src: ['test/*.js']
             },
-	    coverage: {
-      		options: {
-        	  coveralls: true
-      		}
-	    }
         },
         coveralls: {
             // Options relevant to all targets
