@@ -1,11 +1,11 @@
 module.exports = function(grunt) {
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		jshint: {
-      		options: {
-        		jshintrc: "./.jshintrc"
-      		},
-      		all: ['./index.js']
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        jshint: {
+            options: {
+                jshintrc: "./.jshintrc"
+            },
+            all: ['./index.js']
         },
         mochaTest: {
             test: {
@@ -14,39 +14,23 @@ module.exports = function(grunt) {
                 },
                 src: ['test/*.js']
             },
-	    coverage: {
-	      options: {
-	        coveralls: true,
-                reporter: 'spec',
-	        instrument: true
-	      },
-	      src: ['test/*.js'],
-	      all: ['test/*.js']
-	    },
-	    options: {
+            coverage: {
+                options: {
+                    coveralls: true,
+                    reporter: 'spec',
+                    instrument: true
+                },
+                coverage: ['test/*.js'],
+                src: ['test/*.js'],
+                all: ['test/*.js']
+            },
+            options: {
                 files: 'test/*.js'
             }
-        },
-        coveralls: {
-            // Options relevant to all targets
-            options: {
-                // When true, grunt-coveralls will only print a warning rather than
-                // an error, to prevent CI builds from failing unnecessarily (e.g. if
-                // coveralls.io is down). Optional, defaults to false.
-                force: false
-            },
-
-            test: {
-                // LCOV coverage file (can be string, glob or array)
-                src: 'coverage-results/extra-results-*.info',
-                options: {
-                    // Any options for just this target
-                }
-            },
         }
     });
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-mocha-test');
-	grunt.loadNpmTasks('grunt-coveralls');
-	grunt.registerTask('default', ['jshint','mochaTest']);
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-coveralls');
+    grunt.registerTask('default', ['jshint', 'mochaTest']);
 };
