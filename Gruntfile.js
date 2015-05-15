@@ -36,25 +36,10 @@ module.exports = function(grunt) {
                     // Any options for just this target
                 }
             },
-        },
-        mochacov: {
-    		coverage: {
-      			options: {
-        			coveralls: true
-      			}
-		},
-    		test: {
-      			options: {
-        			reporter: 'spec'
-      			}
-    		},
-    		options: {
-      				files: 'test/*.js'
-    		}
-  	}
+        }
     });
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-coveralls');
-	grunt.registerTask('default', ['jshint','mochaTest','mochacov']);
+	grunt.registerTask('default', ['jshint','mochaTest']);
 };
