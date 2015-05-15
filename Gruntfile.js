@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 	    coverage: {
 	      options: {
 	        coveralls: true
-	      }
+	      },
+	      all: ['test/*.js']
 	    },
 	    options: {
 	      files: 'test/*.js'
