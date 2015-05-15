@@ -16,13 +16,16 @@ module.exports = function(grunt) {
             },
 	    coverage: {
 	      options: {
-	        coveralls: true
+	        coveralls: true,
+                reporter: 'spec',
+	        instrument: true
 	      },
+	      src: ['test/*.js'],
 	      all: ['test/*.js']
 	    },
 	    options: {
-	      files: 'test/*.js'
-	    }            
+                files: 'test/*.js'
+            }
         },
         coveralls: {
             // Options relevant to all targets
